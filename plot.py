@@ -43,7 +43,7 @@ for file in files:
 
     for c in data.columns:
         data[c] = [x.replace(',', '.') if type(x) == str else x for x in data[c]]
-        data[c] = data[c].astype(np.float64)
+        data[c] = pd.to_numeric(data[c], errors='coerce')
 
     time_h = data['ProcessTime Value, hours'].to_numpy(dtype=np.float64)
 
